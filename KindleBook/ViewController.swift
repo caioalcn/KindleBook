@@ -16,9 +16,49 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Kindle"
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        tableView.register(BookCell.self, forCellReuseIdentifier: "cellId")
         tableView.tableFooterView = UIView()
         
+        fetchBooks()
+    }
+    
+    
+    func fetchBooks() {
+        
+        guard let url = URL(string: "https://letsbuildthatapp-videos.s3-us-west-2.amazonaws.com/kindle.json") else { return }
+        
+        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            
+            if let err = error {
+                print(err)
+                return
+            }
+            
+            
+            guard let data = data else { return }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+
+                guard let bookDictionary = json as? [[String: Any]] else { return }
+                self.books = []
+                 bookDictionary.forEach({ (book) in
+
+                    let book = Book(dict: book)
+                    
+                    self.books?.append(book)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    
+                })
+                
+            } catch (let err) {
+                
+            }
+            
+        }).resume()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,15 +66,30 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! BookCell
         
         let book = books?[indexPath.row]
         
-        cell.textLabel?.text = book?.title
+        cell.book = book
         
         return cell
         
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedBook = self.books?[indexPath.row]
+        
+        let layout = UICollectionViewFlowLayout()
+        let bookPageController = BookPageController(collectionViewLayout: layout)
+        
+        bookPageController.book = selectedBook
+
+        let navController = UINavigationController(rootViewController: bookPageController)
+        
+        present(navController , animated: true, completion: nil)
+        
+    }  
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -47,9 +102,11 @@ class ViewController: UITableViewController {
         
         let pages = [page1, page2]
         
-        let book = Book(title: "Steve Jobs", author: "Walter Isaacson", pages: pages)
+        let book = Book(title: "Steve Jobs", author: "Walter Isaacson", image: #imageLiteral(resourceName: "steve_jobs") , pages: pages)
         
-        let book2 = Book(title: "Bill Gates: A Biography", author: "Michael Becraft", pages:
+        
+        
+        let book2 = Book(title: "Bill Gates: A Biography", author: "Michael Becraft", image: #imageLiteral(resourceName: "bill_gates"), pages:
             [Page(number: 1, text: "Text for page 1"),
              Page(number: 2, text: "Text for page 2"),
              Page(number: 3, text: "Text for page 3"),

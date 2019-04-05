@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1703AB67225240D200ED935E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1703AB66225240D200ED935E /* Models.swift */; };
+		DB147B7822568DAE006D7689 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB147B7722568DAE006D7689 /* BookCell.swift */; };
+		DB147B7A2256A171006D7689 /* BookPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB147B792256A171006D7689 /* BookPageController.swift */; };
+		DB147B7C2256B3EE006D7689 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB147B7B2256B3EE006D7689 /* PageCell.swift */; };
 		DB16C8BE224F067200AD127A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16C8BD224F067200AD127A /* AppDelegate.swift */; };
 		DB16C8C0224F067200AD127A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB16C8BF224F067200AD127A /* ViewController.swift */; };
 		DB16C8C5224F067400AD127A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB16C8C4224F067400AD127A /* Assets.xcassets */; };
@@ -16,6 +19,9 @@
 
 /* Begin PBXFileReference section */
 		1703AB66225240D200ED935E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		DB147B7722568DAE006D7689 /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		DB147B792256A171006D7689 /* BookPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookPageController.swift; sourceTree = "<group>"; };
+		DB147B7B2256B3EE006D7689 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		DB16C8BA224F067200AD127A /* KindleBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KindleBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB16C8BD224F067200AD127A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB16C8BF224F067200AD127A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				DB16C8BC224F067200AD127A /* KindleBook */,
-				DB16C8BB224F067200AD127A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +54,7 @@
 				DB16C8BA224F067200AD127A /* KindleBook.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DB16C8BC224F067200AD127A /* KindleBook */ = {
@@ -56,9 +62,13 @@
 			children = (
 				DB16C8BD224F067200AD127A /* AppDelegate.swift */,
 				DB16C8BF224F067200AD127A /* ViewController.swift */,
+				DB147B792256A171006D7689 /* BookPageController.swift */,
+				DB147B7722568DAE006D7689 /* BookCell.swift */,
+				DB147B7B2256B3EE006D7689 /* PageCell.swift */,
 				1703AB66225240D200ED935E /* Models.swift */,
 				DB16C8C4224F067400AD127A /* Assets.xcassets */,
 				DB16C8C6224F067400AD127A /* LaunchScreen.storyboard */,
+				DB16C8BB224F067200AD127A /* Products */,
 				DB16C8C9224F067400AD127A /* Info.plist */,
 			);
 			path = KindleBook;
@@ -134,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB147B7822568DAE006D7689 /* BookCell.swift in Sources */,
 				1703AB67225240D200ED935E /* Models.swift in Sources */,
+				DB147B7C2256B3EE006D7689 /* PageCell.swift in Sources */,
 				DB16C8C0224F067200AD127A /* ViewController.swift in Sources */,
+				DB147B7A2256A171006D7689 /* BookPageController.swift in Sources */,
 				DB16C8BE224F067200AD127A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
